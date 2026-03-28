@@ -2,19 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <meta
-      name="description"
-      content="Relay Studio turns product intent into specs, tasks, autonomous build loops, and reviewable pull requests."
-    />
-    <title>Relay Studio | Autonomous Development, With Control</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>Relay Studio — Specs-First Autonomous Development</title>
+    <meta name="description" content="Turn AI coding agents into a visual Kanban build loop. Describe a feature, generate a spec, decompose into tasks, and let Claude Code or Codex build it — with human review gates at every step." />
+    <link rel="canonical" href="https://relay-studio.dev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Relay Studio" />
+    <meta property="og:title" content="Relay Studio — Ship Features with Structured Autonomy" />
+    <meta property="og:description" content="Desktop app that wraps Claude Code and OpenAI Codex into a PRD → Tasks → Build Loop → Review workflow. Open source, runs locally." />
+    <meta property="og:url" content="https://relay-studio.dev/" />
+    <meta property="og:image" content="https://relay-studio.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Relay Studio — Ship Features with Structured Autonomy" />
+    <meta name="twitter:description" content="Desktop app that wraps Claude Code and OpenAI Codex into a PRD → Tasks → Build Loop → Review workflow. Open source, runs locally." />
+    <meta name="twitter:image" content="https://relay-studio.dev/og-image.png" />
+
+    <!-- Technical SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#1c1a16" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="author" content="Yoni Raviv" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/relay-dark.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/relay-dark.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Relay",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Desktop app that turns AI coding agents into a visual Kanban build loop with PRD generation, task decomposition, and human review gates.",
+      "url": "https://relay-studio.dev",
+      "downloadUrl": "https://github.com/YoniRaviv/Relay/releases/latest/download/Relay-Mac-Installer.dmg",
+      "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "author": { "@type": "Person", "name": "Yoni Raviv", "url": "https://github.com/YoniRaviv" }
+    }
+    </script>
+
+    <!-- Preconnect to font provider -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
- </html>
+</html>

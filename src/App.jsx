@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useLocation, Routes, Route } from "react-router-dom";
+import { Head } from "./components/seo/Head";
 import { ChangelogPage } from "./pages/changelog/ChangelogPage";
 import { DocsPage } from "./pages/docs/DocsPage";
 import { LandingPage } from "./pages/landing/LandingPage";
@@ -28,6 +29,8 @@ export function App() {
   const location = useLocation();
 
   return (
+    <>
+    <Head />
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={location.pathname}
@@ -47,5 +50,6 @@ export function App() {
         </Routes>
       </motion.div>
     </AnimatePresence>
+    </>
   );
 }

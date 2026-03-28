@@ -1,6 +1,6 @@
 export const footerContent = {
   description:
-    "Autonomous development, shaped into a professional engineering workflow.",
+    "Specs-first autonomous development. Open source, runs locally, ships real PRs.",
   groups: [
     {
       title: "Product",
@@ -15,7 +15,7 @@ export const footerContent = {
       links: [
         { label: "Security", href: "/security/" },
         { label: "Support", href: "/support/" },
-        { label: "GitHub", href: "https://github.com", external: true },
+        { label: "GitHub", href: "https://github.com/YoniRaviv/Relay", external: true },
       ],
     },
     {

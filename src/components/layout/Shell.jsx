@@ -11,16 +11,16 @@ export function Shell({ children, compact = false, currentPath, calm = false }) 
   return (
     <div className={clsx("relative", calm && "bg-gradient-to-b from-[#1c1a16] to-[#18160f]")}>
       {!calm && (
-        <>
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
           <motion.div
-            className="fixed w-[32rem] h-[32rem] pointer-events-none rounded-full blur-[100px] opacity-[0.18] animate-drift -top-40 -left-32 bg-brand/30 z-0"
+            className="absolute w-[32rem] h-[32rem] rounded-full blur-[100px] opacity-[0.18] animate-drift -top-40 -left-32 bg-brand/30"
             style={reduceMotion ? undefined : { y: leftGlowY }}
           />
           <motion.div
-            className="fixed w-[32rem] h-[32rem] pointer-events-none rounded-full blur-[100px] opacity-[0.18] animate-drift top-96 -right-40 bg-brand/20 z-0"
+            className="absolute w-[32rem] h-[32rem] rounded-full blur-[100px] opacity-[0.18] animate-drift top-96 -right-40 bg-brand/20"
             style={reduceMotion ? undefined : { y: rightGlowY }}
           />
-        </>
+        </div>
       )}
       <Header compact={compact} currentPath={currentPath} calm={calm} />
       {children}

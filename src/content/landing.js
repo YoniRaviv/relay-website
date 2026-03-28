@@ -1,84 +1,84 @@
 export const heroContent = {
-  eyebrow: "Autonomous Software Delivery",
-  title: ["The operating layer for", "structured AI development."],
+  eyebrow: "Specs-First Autonomous Development",
+  title: ["Ship features with", "structured autonomy."],
   description:
-    "Relay Studio transforms a feature idea into a detailed spec, decomposed tasks, managed build loops, feature-branch commits, and a final pull request your team can actually review.",
-  primaryCta: { label: "Explore Product", href: "#product" },
+    "Relay Studio turns a plain-language feature request into a PRD, decomposes it into scoped tasks, and runs an autonomous build loop — with isolated commits, task-level diffs, and human review gates at every step.",
+  primaryCta: { label: "Download for macOS", href: "https://github.com/YoniRaviv/Relay/releases/latest/download/Relay-Mac-Installer.dmg", external: true },
   secondaryCta: { label: "Open Docs", href: "/docs/" },
-  meta: ["Electron-native", "Open source", "Codex + Claude Code"],
+  meta: ["macOS only", "Open source", "Claude Code + Codex"],
 };
 
 export const platformIntro = {
   eyebrow: "Product",
-  title: "Precision for teams that want autonomy without surrendering control.",
+  title: "One surface for specs, tasks, builds, and review.",
 };
 
 export const featureCards = [
   {
-    eyebrow: "Intent To Architecture",
-    title: "Relay Studio turns a feature request into an execution system.",
+    eyebrow: "PRD Generation",
+    title: "Describe once. Get a spec, tasks, and acceptance criteria.",
     body:
-      "Describe the feature once. Relay Studio produces a detailed spec, decomposes the work into linked tasks, and keeps the implementation aligned to the specification.",
+      "Type a feature request, attach wireframes or docs, answer a few clarifying questions — Relay generates a structured PRD and decomposes it into 3–10 buildable tasks with explicit acceptance criteria.",
   },
   {
-    eyebrow: "Agent Runtime",
-    title: "Built for Codex and Claude Code build loops.",
+    eyebrow: "Build Loop",
+    title: "An autonomous agent that builds task-by-task on a feature branch.",
     body:
-      "Choose your engine, choose your governance model, and let Relay Studio manage the surrounding context, task state, branching, and review checkpoints.",
+      "Relay picks the next pending task, injects cumulative context from completed work, runs the agent, creates a WIP commit, and routes to review — or keeps building in continuous mode.",
   },
   {
-    eyebrow: "Delivery Discipline",
-    title: "Every feature becomes a clean branch and a real pull request.",
+    eyebrow: "Review & Approve",
+    title: "Task-scoped diffs. Approve, reject, or let the agent retry.",
     body:
-      "Tasks commit into the feature branch as progress lands. When the build loop finishes, Relay Studio opens the PR with a traceable history instead of a pile of opaque agent output.",
+      "Every task pauses for review with a syntax-highlighted diff, acceptance criteria checklist, and full agent activity log. Reject with notes and the agent retries with your feedback in context.",
   },
 ];
 
 export const workflowContent = {
   eyebrow: "Workflow",
-  title: "From feature brief to merged-ready branch, Relay Studio keeps the loop coherent.",
+  title: "From feature request to merged PR in a single loop.",
   description:
-    "The product model stays visible throughout execution: specs, kanban tasks, active engine, governance mode, commit trail, and final PR output all live inside one operating surface.",
+    "Relay keeps the full lifecycle visible: PRD, kanban board, agent activity, commit trail, and cost metrics — all on one surface. No context switching between terminal, editor, and project tracker.",
   steps: [
     {
       id: "01",
-      title: "Define the feature",
+      title: "Describe the feature",
       text:
-        "Open an existing project, describe the outcome, and let Relay Studio capture intent without forcing you to manually pre-structure every step.",
+        "Open your project, describe what you want to build, and optionally attach images or reference files. Relay asks 3–5 clarifying questions to capture intent.",
     },
     {
       id: "02",
-      title: "Generate the spec",
+      title: "Generate spec & tasks",
       text:
-        "Relay Studio expands the request into a technical spec with explicit scope, dependencies, acceptance criteria, and build guidance for the agent.",
+        "Relay reads your codebase, generates a structured PRD with scope and dependencies, then decomposes it into prioritized tasks with acceptance criteria.",
     },
     {
       id: "03",
-      title: "Decompose into tasks",
+      title: "Run the build loop",
       text:
-        "The spec is transformed into scoped tasks on a visual board so you can inspect ordering, track progress, and intervene only where it matters.",
+        "Each task is executed by Claude Code or Codex with cumulative context from prior tasks. Commits land on the feature branch as work progresses.",
     },
     {
       id: "04",
-      title: "Run the build loop",
+      title: "Review & merge",
       text:
-        "Each task is executed by the selected engine with your preferred review mode. Commits accumulate on the feature branch while Relay Studio maintains continuity.",
+        "Inspect task-level diffs, check acceptance criteria, and approve or reject with notes. Approved tasks are committed and pushed. The loop continues until the feature is complete.",
     },
   ],
 };
 
 export const showcaseContent = {
   eyebrow: "Operator Surface",
-  title: "The board is the center of gravity, but the surrounding workflow matters too.",
+  title: "A kanban board that orchestrates autonomous agents.",
   description:
-    "Relay Studio keeps the task board, feature summary, and spec creation flow connected so autonomous work stays inspectable from request to review.",
+    "Pending, Building, Human Review, Complete — every task moves through a visual pipeline. Drag to reorder, click to inspect diffs, and control the loop with play, pause, and stop.",
   panels: [
     {
       type: "summary",
-      label: "Summary",
-      title: "Build cost, passes, time, and output quality in one place",
+      label: "Feature Summary",
+      title: "Cost, time, passes, and quality for every feature",
       body:
-        "Summary turns the finished feature into something measurable, not just something that shipped.",
+        "Know exactly what the agent consumed: tokens, dollars, tool calls, and time — broken down per task and per model.",
       stats: [
         ["Total Tasks", "13", "4 pending, 2 in progress"],
         ["Completion Rate", "54%", "7 of 13 completed"],
@@ -100,17 +100,17 @@ export const showcaseContent = {
     {
       type: "spec",
       label: "New Feature",
-      title: "Specs start from plain-language intent, not rigid templates",
+      title: "Start from intent, not templates",
       body:
-        "The app captures feature context, attached references, and testing preferences before turning the request into a formal spec.",
+        "Describe what you want in plain language, attach wireframes or reference files, toggle unit tests on or off — Relay handles the rest.",
       steps: ["Describe", "Review Specification", "Edit", "Tasks", "Confirm"],
     },
     {
       type: "refine",
-      label: "Specification Refinement",
-      title: "Relay asks just enough to make the spec stronger",
+      label: "Spec Refinement",
+      title: "Targeted questions that sharpen the spec before any code is written",
       body:
-        "Follow-up questions keep the workflow moving while still clarifying layout, behavior, and implementation assumptions before task generation.",
+        "Relay asks just enough to clarify layout, behavior, and implementation details — then generates the PRD with your answers baked in.",
       question: "How should the hero section adapt across different screen sizes?",
       options: [
         "Maintain particles on all devices with reduced complexity on mobile",
@@ -124,58 +124,59 @@ export const showcaseContent = {
 
 export const summaryContent = {
   metrics: [
-    { value: "Specs", label: "generated from plain-language intent" },
-    { value: "Kanban", label: "live task orchestration across the build loop" },
-    { value: "3 Modes", label: "autopilot, continuous review, human gate" },
-    { value: "Branch-Safe", label: "feature-isolated execution and PR output" },
+    { value: "PRD", label: "generated from natural language + attached files" },
+    { value: "Kanban", label: "4-column board with drag-and-drop orchestration" },
+    { value: "3 Engines", label: "Claude Code, Anthropic SDK, OpenAI Codex" },
+    { value: "Git-Native", label: "WIP commits, feature branches, auto-push" },
   ],
   panel: {
-    eyebrow: "Summary Board",
-    title: "Every feature closes with evidence, not guesswork.",
+    eyebrow: "Build Metrics",
+    title: "Every feature ships with a receipt.",
     description:
-      "Relay Studio surfaces total spend, effort, model distribution, and elapsed build time so you can understand what the agent actually consumed to ship the work.",
+      "Relay tracks token usage, cost per model, build duration, tool calls, and first-pass success rate — so you can compare engines, estimate future features, and hold the agent accountable.",
     bullets: [
-      "Cost visibility across the full feature lifecycle",
-      "Model usage reporting for engine comparison",
-      "Effort and duration metrics for planning feedback loops",
+      "Per-task cost breakdown across Anthropic and OpenAI models",
+      "First-pass success rate as a quality signal for your specs",
+      "Exportable markdown reports for team visibility",
     ],
   },
 };
 
 export const governanceContent = {
-  eyebrow: "Governance Modes",
-  title: "Choose the amount of human involvement the feature deserves.",
+  eyebrow: "Build Modes",
+  title: "Control how much the agent can do before it stops for you.",
   modes: [
+    {
+      name: "Review",
+      description:
+        "The agent builds one task, creates a WIP commit, and pauses. You review the diff, check acceptance criteria, and approve or reject before the next task starts.",
+    },
+    {
+      name: "Continuous",
+      description:
+        "The agent keeps building without pausing. Completed tasks accumulate in the review column for batch approval after the loop finishes.",
+    },
     {
       name: "Autopilot",
       description:
-        "Best for trusted paths. Relay Studio advances the loop with minimal interruption and optimizes for throughput.",
-    },
-    {
-      name: "Continuous Review",
-      description:
-        "A balanced mode for teams that want to inspect the build as it progresses without manually driving every task.",
-    },
-    {
-      name: "Human Gate",
-      description:
-        "Use explicit approval checkpoints before major transitions, merges, or sensitive implementation phases.",
+        "Fully autonomous. The agent builds, commits, and pushes each task without waiting for approval. Best for trusted, well-scoped work.",
     },
   ],
 };
 
 export const ctaContent = {
-  eyebrow: "Open Source, Production-Minded",
-  title: "Build with agents. Keep the engineering discipline.",
+  eyebrow: "Open Source",
+  title: "Autonomous builds. Engineering-grade output.",
   description:
-    "Relay Studio is designed for teams that want autonomous execution, traceable delivery, and a workflow that still respects PRs, branches, and human judgment.",
+    "Relay Studio is free, open source, and runs locally. No API keys needed — it uses your existing Claude Code authentication. Bring your own keys if you want SDK or Codex engines.",
   primaryCta: {
-    label: "View Repository",
-    href: "https://github.com",
+    label: "Download for macOS",
+    href: "https://github.com/YoniRaviv/Relay/releases/latest/download/Relay-Mac-Installer.dmg",
     external: true,
   },
   secondaryCta: {
-    label: "Read the Docs",
-    href: "/docs/",
+    label: "View Repository",
+    href: "https://github.com/YoniRaviv/Relay",
+    external: true,
   },
 };

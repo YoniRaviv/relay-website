@@ -35,7 +35,7 @@ export function SummarySection({ content }) {
             <h2 className="font-display text-[clamp(2.3rem,4vw,4rem)] tracking-[-0.055em] leading-[0.95] m-0 max-w-[13ch]">
               {content.panel.title}
             </h2>
-            <p className="text-muted leading-7 text-base">{content.panel.description}</p>
+            <p className="text-muted leading-7 text-base mt-5">{content.panel.description}</p>
             <ul className="mt-5 p-0 list-none">
               {content.panel.bullets.map((bullet) => (
                 <li key={bullet} className="relative mb-3.5 pl-5 text-text-primary before:content-[''] before:absolute before:top-2.5 before:left-0 before:w-2 before:h-2 before:rounded-full before:bg-brand">

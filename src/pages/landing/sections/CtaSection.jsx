@@ -18,17 +18,20 @@ export function CtaSection({ content }) {
           <h2 className="font-display text-[clamp(2rem,4vw,3.6rem)] tracking-[-0.05em] leading-[0.95] mx-auto max-w-[12ch]">
             {content.title}
           </h2>
-          <p className="text-muted leading-7 text-base">{content.description}</p>
+          <p className="text-muted leading-7 text-base mt-5">{content.description}</p>
           <div className="flex flex-wrap justify-center gap-3.5 mt-8">
             <AppLink
               className="btn btn-primary"
               href={content.primaryCta.href}
-              target={content.primaryCta.external ? "_blank" : undefined}
-              rel={content.primaryCta.external ? "noreferrer" : undefined}
             >
               {content.primaryCta.label}
             </AppLink>
-            <AppLink className="btn btn-secondary" href={content.secondaryCta.href}>
+            <AppLink
+              className="btn btn-secondary"
+              href={content.secondaryCta.href}
+              target={content.secondaryCta.external ? "_blank" : undefined}
+              rel={content.secondaryCta.external ? "noreferrer" : undefined}
+            >
               {content.secondaryCta.label}
             </AppLink>
           </div>

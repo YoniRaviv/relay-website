@@ -7,7 +7,12 @@ export function DocsCta({ content }) {
         <h2 className="font-display text-2xl tracking-[-0.04em] m-0 mb-2">{content.title}</h2>
         <p className="text-muted leading-7">{content.description}</p>
       </div>
-      <AppLink className="btn btn-primary shrink-0" href={content.button.href}>
+      <AppLink
+        className="btn btn-primary shrink-0"
+        href={content.button.href}
+        target={content.button.external ? "_blank" : undefined}
+        rel={content.button.external ? "noreferrer" : undefined}
+      >
         {content.button.label}
       </AppLink>
     </section>

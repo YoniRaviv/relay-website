@@ -35,6 +35,10 @@ export function Footer() {
           </div>
         ))}
       </div>
+
+      <div className="w-full pt-8 mt-8 border-t border-border/30 text-center md:text-left text-muted text-[0.84rem]">
+        Built with love by <a href="https://github.com/YoniRaviv" target="_blank" rel="noreferrer" className="text-text-primary hover:text-brand transition-colors">Yoni Raviv</a>
+      </div>
     </footer>
   );
 }

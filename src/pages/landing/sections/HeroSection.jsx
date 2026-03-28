@@ -54,7 +54,7 @@ export function HeroSection({ content }) {
   return (
     <SectionReveal
       as="section"
-      className="grid grid-cols-1 lg:grid-cols-[minmax(18rem,0.92fr)_minmax(0,1.08fr)] items-center gap-8 min-h-[calc(100vh-90px)] py-16 pb-20 w-[min(calc(100%-2rem),1180px)] mx-auto relative z-[1]"
+      className="grid grid-cols-1 lg:grid-cols-[minmax(18rem,0.92fr)_minmax(0,1.08fr)] items-center gap-8 lg:min-h-[calc(100vh-90px)] py-16 pb-20 w-[min(calc(100%-2rem),1180px)] mx-auto relative z-[1]"
     >
       <motion.div className="relative z-[2] max-w-[40rem]">
         <RevealItem className="eyebrow">{content.eyebrow}</RevealItem>

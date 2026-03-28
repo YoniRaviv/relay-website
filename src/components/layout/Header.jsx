@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 import { useLocation } from "react-router-dom";
 import { navigation } from "../../content/navigation";
 import { brand } from "../../content/brand";
@@ -31,7 +30,8 @@ export function Header({ compact, currentPath, calm }) {
             : "bg-surface/72 shadow-[0_18px_40px_rgba(0,0,0,0.2)]",
         )}
       >
-        <AppLink className="font-display text-[1.3rem] font-bold tracking-[-0.04em]" href="/">
+        <AppLink className="flex items-center gap-2 font-display text-[1.3rem] font-bold tracking-[-0.04em]" href="/">
+          <img src="/assets/Relay-icon.png" alt="Relay studio logo" width="50" height="50" className="rounded-full" />
           {brand.mark.primary}
           <span className="text-brand">{brand.mark.accent}</span>
         </AppLink>
@@ -89,21 +89,33 @@ export function Header({ compact, currentPath, calm }) {
 
     </div>
 
-    {/* Full-screen mobile menu — portaled to body for clean stacking */}
-    {createPortal(
-      <AnimatePresence>
-        {isOpen && (
+    {/* Dropdown mobile menu */}
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
           <motion.div
-            key="mobile-menu"
-            className="fixed inset-0 z-[60] flex flex-col bg-surface px-4 pt-4 pb-8 md:hidden"
+            key="mobile-backdrop"
+            className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-[2px] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Panel */}
+          <motion.div
+            key="mobile-menu"
+            className="fixed left-4 right-4 top-2 z-[60] rounded-[14px] bg-surface-mid/98 backdrop-blur-[20px] shadow-[0_24px_48px_rgba(0,0,0,0.4)] px-5 py-4 md:hidden"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between mb-8">
-              <AppLink className="font-display text-[1.3rem] font-bold tracking-[-0.04em]" href="/" onClick={() => setIsOpen(false)}>
+            {/* Header row */}
+            <div className="flex items-center justify-between mb-5">
+              <AppLink className="flex items-center gap-2 font-display text-[1.3rem] font-bold tracking-[-0.04em]" href="/" onClick={() => setIsOpen(false)}>
+                <img src="/assets/Relay-icon.png" alt="" width="50" height="50" className="rounded-full" />
                 {brand.mark.primary}
                 <span className="text-brand">{brand.mark.accent}</span>
               </AppLink>
@@ -119,46 +131,51 @@ export function Header({ compact, currentPath, calm }) {
             </div>
 
             {/* Nav links */}
-            <nav className="flex flex-col gap-1 mb-6">
-              {navigation.map((item) => (
-                <AppLink
+            <nav className="flex flex-col gap-0.5 mb-5">
+              {[
+                ...navigation,
+                ...(!compact ? [{ label: "Workflow", href: "#workflow" }] : []),
+              ].map((item, i) => (
+                <motion.div
                   key={item.label}
-                  href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noreferrer" : undefined}
-                  onClick={() => setIsOpen(false)}
-                  className={clsx(
-                    "py-3 text-lg font-medium",
-                    currentPath === item.href ? "text-brand" : "text-text-primary hover:text-brand",
-                  )}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.25, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {item.label}
-                </AppLink>
+                  <AppLink
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    onClick={() => setIsOpen(false)}
+                    className={clsx(
+                      "block py-2.5 text-[1.05rem] font-medium transition-colors",
+                      currentPath === item.href ? "text-brand" : "text-text-primary hover:text-brand",
+                    )}
+                  >
+                    {item.label}
+                  </AppLink>
+                </motion.div>
               ))}
-              {!compact && (
-                <AppLink
-                  className="py-3 text-lg font-medium text-text-primary hover:text-brand"
-                  href="#workflow"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Workflow
-                </AppLink>
-              )}
             </nav>
 
             {/* CTA */}
-            <AppLink
-              className="btn btn-primary w-full"
-              href={compact ? "/" : "/docs/"}
-              onClick={() => setIsOpen(false)}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
-              {compact ? "Product" : "View Docs"}
-            </AppLink>
+              <AppLink
+                className="btn btn-primary w-full"
+                href={compact ? "/" : "/docs/"}
+                onClick={() => setIsOpen(false)}
+              >
+                {compact ? "Product" : "View Docs"}
+              </AppLink>
+            </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>,
-      document.body,
-    )}
+        </>
+      )}
+    </AnimatePresence>
     </>
   );
 }

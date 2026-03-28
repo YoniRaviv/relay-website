@@ -10,7 +10,7 @@ export function ShowcaseSection({ content }) {
         <h2 className="font-display text-[clamp(2.3rem,4vw,4rem)] tracking-[-0.055em] leading-[0.95] m-0 max-w-[13ch]">
           {content.title}
         </h2>
-        <p className="text-muted leading-7 text-base">{content.description}</p>
+        <p className="text-muted leading-7 text-base mt-5">{content.description}</p>
       </RevealItem>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.05fr_0.95fr_0.95fr] gap-5 mt-10">

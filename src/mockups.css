@@ -818,3 +818,71 @@
   color: var(--primary-ink);
   font-weight: 700;
 }
+
+/* Mobile overrides — must come after all base rules */
+@media (max-width: 759px) {
+  .hero-product {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    gap: 0;
+  }
+
+  .hero-product__backdrop { display: none; }
+
+  .hero-product__toolbar {
+    position: static;
+    order: 1;
+    margin: 0.75rem 0.75rem 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-product__sidebar {
+    position: static;
+    width: 100%;
+    order: 2;
+    padding: 0.75rem;
+    background: transparent;
+    gap: 0.4rem;
+  }
+
+  .hero-product__feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+  }
+
+  .hero-product__sidebar-nav {
+    flex-direction: row;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-product__board-frame {
+    position: static;
+    order: 3;
+    margin: 0 0.75rem;
+    padding: 0.6rem;
+    height: auto;
+    min-height: 240px;
+  }
+
+  .hero-product__columns {
+    grid-template-columns: repeat(4, minmax(7rem, 1fr));
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    height: auto;
+    min-height: 220px;
+  }
+
+  .hero-product__column {
+    min-height: auto;
+  }
+
+  .hero-runtime {
+    position: static;
+    order: 4;
+    border-radius: 0 0 20px 20px;
+  }
+}
