@@ -6,14 +6,6 @@ export const heroContent = {
   primaryCta: { label: "Explore Product", href: "#product" },
   secondaryCta: { label: "Open Docs", href: "/docs/" },
   meta: ["Electron-native", "Open source", "Codex + Claude Code"],
-  runtime: {
-    title: "Feature Runtime",
-    entries: [
-      ["User request", "Payment retry flow with audit trail"],
-      ["Mode", "Continuous Review"],
-      ["Engine", "Codex"],
-    ],
-  },
 };
 
 export const platformIntro = {
@@ -88,10 +80,16 @@ export const showcaseContent = {
       body:
         "Summary turns the finished feature into something measurable, not just something that shipped.",
       stats: [
-        ["Total Tasks", "13"],
-        ["Completion", "54%"],
+        ["Total Tasks", "13", "4 pending, 2 in progress"],
+        ["Completion Rate", "54%", "7 of 13 completed"],
         ["Build Time", "26m 30s"],
         ["Total Cost", "$1.26"],
+        ["Tool Calls", "334"],
+        ["First-Pass", "86%"],
+      ],
+      models: [
+        ["Sonnet 4.6", "61.3K tokens", "$0.92"],
+        ["GPT-5.4 Mini", "2.2M tokens", "$0.34"],
       ],
       rows: [
         ["US-002", "Done", "Sonnet 4.6", "$0.02"],
@@ -105,11 +103,7 @@ export const showcaseContent = {
       title: "Specs start from plain-language intent, not rigid templates",
       body:
         "The app captures feature context, attached references, and testing preferences before turning the request into a formal spec.",
-      fields: [
-        "Feature name (optional)",
-        "Describe the feature you want to build",
-        "Include unit tests",
-      ],
+      steps: ["Describe", "Review Specification", "Edit", "Tasks", "Confirm"],
     },
     {
       type: "refine",
@@ -117,10 +111,12 @@ export const showcaseContent = {
       title: "Relay asks just enough to make the spec stronger",
       body:
         "Follow-up questions keep the workflow moving while still clarifying layout, behavior, and implementation assumptions before task generation.",
+      question: "How should the hero section adapt across different screen sizes?",
       options: [
-        "Maintain particles on all devices with reduced complexity",
+        "Maintain particles on all devices with reduced complexity on mobile",
         "Remove particles on mobile, keep static design for performance",
         "Different layouts: side-by-side on desktop, stacked on mobile",
+        "Single responsive layout that scales proportionally",
       ],
     },
   ],

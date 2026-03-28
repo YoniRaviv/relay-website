@@ -26,7 +26,7 @@ export function TiltCard({ className, as = "article", children }) {
   const rotateY = useTransform(smoothX, [-0.5, 0.5], [-7, 7]);
   const glowX = useTransform(smoothX, [-0.5, 0.5], ["38%", "62%"]);
   const glowY = useTransform(smoothY, [-0.5, 0.5], ["38%", "62%"]);
-  const background = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(85, 224, 193, 0.16), transparent 36%)`;
+  const background = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(46, 196, 166, 0.1), transparent 36%)`;
 
   const handleMove = (event) => {
     if (reduceMotion) return;

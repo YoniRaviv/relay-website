@@ -33,18 +33,35 @@ function SummaryPanel({ panel }) {
   return (
     <div className="showcase-ui">
       <div className="showcase-summary-metrics">
-        {panel.stats.map(([label, value]) => (
+        {panel.stats.map(([label, value, sub]) => (
           <div key={label} className="showcase-summary-metric">
             <span>{label}</span>
             <strong>{value}</strong>
+            {sub && <span className="showcase-summary-sub">{sub}</span>}
+          </div>
+        ))}
+      </div>
+      <div className="showcase-summary-section">
+        <div className="showcase-summary-section-title">Cost by Model</div>
+        {panel.models.map(([model, tokens, cost]) => (
+          <div key={model} className="showcase-summary-model">
+            <span className="showcase-summary-model-name">{model}</span>
+            <span className="showcase-summary-model-tokens">{tokens}</span>
+            <span className="showcase-summary-model-cost">{cost}</span>
           </div>
         ))}
       </div>
       <div className="showcase-summary-table">
+        <div className="showcase-summary-row showcase-summary-row--header">
+          <span>Story</span>
+          <span>Status</span>
+          <span>Model</span>
+          <span>Cost</span>
+        </div>
         {panel.rows.map(([story, status, model, cost]) => (
           <div key={story + status} className="showcase-summary-row">
             <span>{story}</span>
-            <span>{status}</span>
+            <span className={`showcase-status showcase-status--${status.toLowerCase()}`}>{status}</span>
             <span>{model}</span>
             <span>{cost}</span>
           </div>
@@ -58,21 +75,33 @@ function SpecPanel({ panel }) {
   return (
     <div className="showcase-ui">
       <div className="showcase-spec-stepper">
-        {[1, 2, 3, 4, 5].map((step) => (
-          <span key={step} className={step === 1 ? "is-active" : ""}>
-            {step}
-          </span>
+        {panel.steps.map((step, i) => (
+          <div key={step} className={`showcase-spec-step${i === 0 ? " showcase-spec-step--active" : ""}`}>
+            <span className="showcase-spec-step-num">{i + 1}</span>
+            <span className="showcase-spec-step-label">{step}</span>
+          </div>
         ))}
       </div>
       <div className="showcase-spec-form">
-        {panel.fields.map((field, index) => (
-          <div key={field} className={`showcase-spec-field${index === 1 ? " showcase-spec-field--large" : ""}`}>
-            {field}
-          </div>
-        ))}
+        <div className="showcase-spec-field">
+          <span className="showcase-spec-label">Feature name (optional)</span>
+          <span className="showcase-spec-value">new feature</span>
+        </div>
+        <div className="showcase-spec-field showcase-spec-field--large">
+          <span className="showcase-spec-label">Describe the feature you want to build</span>
+          <span className="showcase-spec-value showcase-spec-value--body">Create a clean, modern hero section with a black background and subtle white particle animation...</span>
+        </div>
+        <div className="showcase-spec-attachments">
+          <span className="showcase-spec-thumb" />
+          <span className="showcase-spec-thumb" />
+          <span className="showcase-spec-thumb-count">2/10 images</span>
+        </div>
         <div className="showcase-spec-actions">
           <span>Attach images</span>
-          <span>Include unit tests</span>
+          <span className="showcase-spec-toggle">
+            <span className="showcase-spec-toggle-track"><span className="showcase-spec-toggle-knob" /></span>
+            Include unit tests
+          </span>
         </div>
         <div className="showcase-spec-cta">Generate Specification</div>
       </div>
@@ -83,15 +112,19 @@ function SpecPanel({ panel }) {
 function RefinePanel({ panel }) {
   return (
     <div className="showcase-ui">
+      <div className="showcase-refine-spec-card">
+        <p>Create a clean, modern hero section with a black background and subtle white particle animation...</p>
+      </div>
       <div className="showcase-refine-progress">
         {[1, 2, 3, 4, 5].map((step) => (
-          <span key={step} className={step < 5 ? "is-complete" : ""}>
-            {step}
+          <span key={step} className={step < 4 ? "is-complete" : step === 4 ? "is-active" : ""}>
+            {step < 4 ? "✓" : step}
           </span>
         ))}
+        <span className="showcase-refine-progress-label">4 of 5</span>
       </div>
       <div className="showcase-refine-question">
-        How should the hero section adapt across different screen sizes?
+        {panel.question}
       </div>
       <div className="showcase-refine-options">
         {panel.options.map((option, index) => (
@@ -99,9 +132,15 @@ function RefinePanel({ panel }) {
             key={option}
             className={`showcase-refine-option${index === 1 ? " showcase-refine-option--active" : ""}`}
           >
+            <span className={`showcase-refine-radio${index === 1 ? " showcase-refine-radio--checked" : ""}`} />
             {option}
           </div>
         ))}
+      </div>
+      <div className="showcase-refine-footer">
+        <span>← Back</span>
+        <span>Skip</span>
+        <span className="showcase-refine-next">Next →</span>
       </div>
     </div>
   );
