@@ -4,20 +4,22 @@ import { TiltCard } from "../../../components/motion/TiltCard";
 
 export function ShowcaseSection({ content }) {
   return (
-    <SectionReveal className="section">
-      <RevealItem className="section-heading">
+    <SectionReveal className="w-[min(calc(100%-2rem),1180px)] mx-auto py-[clamp(3rem,6vw,5.5rem)] relative z-[1]">
+      <RevealItem className="max-w-[760px]">
         <div className="eyebrow">{content.eyebrow}</div>
-        <h2>{content.title}</h2>
-        <p>{content.description}</p>
+        <h2 className="font-display text-[clamp(2.3rem,4vw,4rem)] tracking-[-0.055em] leading-[0.95] m-0 max-w-[13ch]">
+          {content.title}
+        </h2>
+        <p className="text-muted leading-7 text-base">{content.description}</p>
       </RevealItem>
 
-      <div className="showcase-grid">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.05fr_0.95fr_0.95fr] gap-5 mt-10">
         {content.panels.map((panel) => (
-          <RevealItem key={panel.title}>
-            <TiltCard className="showcase-card">
+          <RevealItem key={panel.title} className="h-full">
+            <TiltCard className="showcase-card h-full p-[clamp(1.5rem,3vw,2rem)] rounded-2xl bg-surface-low">
               <div className="eyebrow eyebrow--soft">{panel.label}</div>
-              <h3>{panel.title}</h3>
-              <p>{panel.body}</p>
+              <h3 className="font-display tracking-[-0.04em] m-0 mb-3">{panel.title}</h3>
+              <p className="text-muted leading-7 text-base">{panel.body}</p>
               {panel.type === "summary" && <SummaryPanel panel={panel} />}
               {panel.type === "spec" && <SpecPanel panel={panel} />}
               {panel.type === "refine" && <RefinePanel panel={panel} />}

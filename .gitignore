@@ -41,5 +41,9 @@ coverage/
 # TypeScript (if added later)
 *.tsbuildinfo
 
+# Playwright
+.playwright-mcp/
+*.png
+
 # Misc
 *.local

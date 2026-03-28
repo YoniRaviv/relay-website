@@ -1,37 +1,28 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Header } from "./Header";
+import clsx from "clsx";
 
 export function Shell({ children, compact = false, currentPath, calm = false }) {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const leftGlowY = useTransform(scrollYProgress, [0, 1], [0, 220]);
   const rightGlowY = useTransform(scrollYProgress, [0, 1], [0, -180]);
-  const topbarY = useTransform(scrollYProgress, [0, 0.08], [0, -6]);
-  const topbarOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0.98]);
 
   return (
-    <div
-      className={`site-shell${compact ? " site-shell--compact" : ""}${calm ? " site-shell--calm" : ""}`}
-    >
+    <div className={clsx("relative", calm && "bg-gradient-to-b from-[#1c1a16] to-[#18160f]")}>
       {!calm && (
         <>
           <motion.div
-            className="site-shell__glow site-shell__glow--left"
+            className="fixed w-[32rem] h-[32rem] pointer-events-none rounded-full blur-[100px] opacity-[0.18] animate-drift -top-40 -left-32 bg-brand/30 z-0"
             style={reduceMotion ? undefined : { y: leftGlowY }}
           />
           <motion.div
-            className="site-shell__glow site-shell__glow--right"
+            className="fixed w-[32rem] h-[32rem] pointer-events-none rounded-full blur-[100px] opacity-[0.18] animate-drift top-96 -right-40 bg-brand/20 z-0"
             style={reduceMotion ? undefined : { y: rightGlowY }}
           />
         </>
       )}
-      <motion.div
-        style={
-          reduceMotion || calm ? undefined : { y: topbarY, opacity: topbarOpacity }
-        }
-      >
-        <Header compact={compact} currentPath={currentPath} calm={calm} />
-      </motion.div>
+      <Header compact={compact} currentPath={currentPath} calm={calm} />
       {children}
     </div>
   );

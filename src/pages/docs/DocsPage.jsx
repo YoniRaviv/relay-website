@@ -9,14 +9,14 @@ import { DocsSidebar } from "./sections/DocsSidebar";
 export function DocsPage() {
   return (
     <Shell compact currentPath="/docs/" calm>
-      <main className="docs-shell">
+      <main className="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-6 w-[min(calc(100%-2rem),1180px)] mx-auto py-8 pb-16 relative z-[1]">
         <DocsSidebar
           eyebrow={docsPageContent.sidebarEyebrow}
           items={docsPageContent.sections}
           status={docsPageContent.status}
         />
 
-        <section className="docs-content">
+        <section className="grid gap-6">
           <DocsHero content={docsPageContent.hero} />
           <DocsSectionList sections={docsPageContent.sections} />
           <DocsCta content={docsPageContent.cta} />

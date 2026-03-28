@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #1c1a16;
+  --color-surface-low: #211f1b;
+  --color-surface-mid: #26231f;
+  --color-surface-high: #2b2823;
+  --color-surface-highest: #3a3530;
+  --color-text-primary: #e5ded4;
+  --color-muted: #9b9289;
+  --color-brand: #2ec4a6;
+  --color-brand-deep: #24a089;
+  --color-brand-ink: #0c2920;
+  --color-border: #332f2b;
+  --color-input: #3d3833;
+  --color-secondary: #312d28;
+
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --breakpoint-md: 760px;
+  --breakpoint-lg: 1024px;
+
+  --animate-drift: drift 16s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, 2rem, 0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* Base resets */
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(46, 196, 166, 0.05), transparent 40%),
+      radial-gradient(ellipse at 80% 10%, rgba(46, 196, 166, 0.03), transparent 36%),
+      linear-gradient(180deg, #1c1a16 0%, #18160f 100%);
+    color: var(--color-text-primary);
+  }
+
+  body.menu-open { overflow: hidden; }
+
+  a { color: inherit; text-decoration: none; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0ms !important;
+    }
+  }
+}
+
+/* Shared component classes */
+@layer components {
+  .eyebrow {
+    margin-bottom: 1rem;
+    color: var(--color-brand);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow--soft {
+    color: #6dd8bf;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 1.3rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  }
+
+  .btn:hover { transform: translateY(-1px); }
+
+  .btn-primary {
+    color: var(--color-brand-ink);
+    background: linear-gradient(135deg, var(--color-brand-deep), var(--color-brand));
+    box-shadow: 0 4px 16px rgba(46, 196, 166, 0.15);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 24px rgba(46, 196, 166, 0.25);
+  }
+
+  .btn-secondary {
+    color: var(--color-text-primary);
+    background: var(--color-secondary);
+  }
+}
+
+/* Decorative mockup styles (hero product panel + showcase panels) */
+@import "./mockups.css" layer(components);

@@ -52,27 +52,34 @@ export function HeroSection({ content }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <SectionReveal as="section" className="hero grid">
-      <motion.div className="hero__copy">
+    <SectionReveal
+      as="section"
+      className="grid grid-cols-1 lg:grid-cols-[minmax(18rem,0.92fr)_minmax(0,1.08fr)] items-center gap-8 min-h-[calc(100vh-90px)] py-16 pb-20 w-[min(calc(100%-2rem),1180px)] mx-auto relative z-[1]"
+    >
+      <motion.div className="relative z-[2] max-w-[40rem]">
         <RevealItem className="eyebrow">{content.eyebrow}</RevealItem>
-        <RevealItem as="h1">
+        <RevealItem as="h1" className="font-display text-[clamp(3.5rem,8vw,6.7rem)] tracking-[-0.055em] leading-[0.95] m-0 max-w-[10ch]">
           {content.title[0]}
-          <span> {content.title[1]}</span>
+          <span className="text-brand"> {content.title[1]}</span>
         </RevealItem>
-        <RevealItem as="p" className="hero__lede">
+        <RevealItem as="p" className="max-w-[58ch] mt-5 text-muted leading-7 text-base">
           {content.description}
         </RevealItem>
-        <RevealItem className="hero__actions">
-          <AppLink className="button button--primary" href={content.primaryCta.href}>
+        <RevealItem className="flex flex-wrap gap-3.5 mt-8">
+          <AppLink className="btn btn-primary" href={content.primaryCta.href}>
             {content.primaryCta.label}
           </AppLink>
-          <AppLink className="button button--secondary" href={content.secondaryCta.href}>
+          <AppLink className="btn btn-secondary" href={content.secondaryCta.href}>
             {content.secondaryCta.label}
           </AppLink>
         </RevealItem>
-        <RevealItem className="hero__meta">
+        <RevealItem className="flex flex-wrap gap-3.5 mt-5">
           {content.meta.map((item) => (
-            <motion.span key={item} whileHover={reduceMotion ? undefined : { y: -3 }}>
+            <motion.span
+              key={item}
+              className="px-3 py-2 rounded-full bg-secondary text-muted text-[0.86rem]"
+              whileHover={reduceMotion ? undefined : { y: -3 }}
+            >
               {item}
             </motion.span>
           ))}
