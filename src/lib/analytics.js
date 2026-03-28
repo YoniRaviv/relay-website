@@ -1,19 +1,15 @@
 /**
- * Minimal outbound link tracking.
- * Sends a pixel request to a Cloudflare Pages Function at /api/event.
- * If the function doesn't exist yet, the request silently 404s — no impact.
+ * Minimal click tracking using Cloudflare Web Analytics custom events.
+ * CF Web Analytics is enabled in the dashboard — it injects its own script.
+ * We just push events to the __cfBeacon queue when available.
+ *
+ * If CF Web Analytics is not yet enabled, events are silently dropped.
  */
-const ENDPOINT = "/api/event";
-
 export function trackEvent(name) {
   try {
-    const params = new URLSearchParams({
-      e: name,
-      p: window.location.pathname,
-      t: Date.now().toString(),
-    });
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(`${ENDPOINT}?${params}`);
+    // CF Web Analytics exposes __cfRum if the script is loaded
+    if (typeof window.__cfRum === "function") {
+      window.__cfRum("event", { name });
     }
   } catch {
     // silent
