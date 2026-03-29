@@ -43,7 +43,6 @@ coverage/
 
 # Playwright
 .playwright-mcp/
-*.png
 
 # Misc
 *.local
