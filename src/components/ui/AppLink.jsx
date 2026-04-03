@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { trackDownload, trackGitHub } from "../../lib/analytics";
+import { trackDownload, trackGitHub } from "../../lib/events";
 
 function isInternalHref(href) {
   return href.startsWith("/") && !href.startsWith("//");

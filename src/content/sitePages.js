@@ -6,6 +6,22 @@ export const changelogPage = {
     "Release history for Relay. Each version links to the corresponding GitHub release.",
   sections: [
     {
+      title: "0.9.5-alpha — April 3, 2026",
+      body:
+        "Two major new features: Brainstorm mode for guided pre-spec conversations, and a Code Review Agent that runs across the full feature diff after all tasks are complete.",
+      bullets: [
+        "Brainstorm mode — structured multi-turn conversation before writing a spec: AI explores needs, presents approaches with trade-offs, walks through design sections for approval, and converges on a design document",
+        "Code Review Agent — two-phase post-build review: Phase 1 analyzes the full feature diff (read-only), Phase 2 applies selected fixes in one engine call and one commit",
+        "7 review categories: Security, Performance, Race Conditions, Error Handling, Best Practices, Conventions, Accessibility",
+        "3 severity levels (Critical, Warning, Info) with per-finding checkboxes and bulk-select by severity",
+        "Stack-aware analysis — auto-detects React, Express, Go, Python, Rust, and more; reads CLAUDE.md and .cursorrules for project conventions",
+        "Model selection before analysis; fresh context window per phase, independent of the build loop; works with all three engines",
+        "Specification wizard now offers three paths: Specification (AI-assisted), Brainstorm (design conversation), or Manual (skip to task board)",
+        "Brainstorm conversation phases: Understanding your needs → Exploring approaches → Designing the solution → Design complete",
+        "Approach cards with pros/cons and recommended badge; design sections with approve/request-changes flow",
+      ],
+    },
+    {
       title: "0.9.4-beta — March 27, 2026",
       body:
         "Major stability and workflow release. 14 planned items plus 4 bonus fixes discovered during implementation. Focused on git flow reliability, persistent sessions, and keyboard-driven workflows.",

@@ -15,10 +15,10 @@ export const platformIntro = {
 
 export const featureCards = [
   {
-    eyebrow: "PRD Generation",
-    title: "Describe once. Get a spec, tasks, and acceptance criteria.",
+    eyebrow: "Feature Specification",
+    title: "Describe once — generate a spec, brainstorm a design, or go straight to tasks.",
     body:
-      "Type a feature request, attach wireframes or docs, answer a few clarifying questions — Relay generates a structured PRD and decomposes it into 3–10 buildable tasks with explicit acceptance criteria.",
+      "Type a feature request, attach wireframes, and choose your path: generate a structured specification with clarifying questions, brainstorm through a guided conversation that explores approaches and converges on a design, or skip straight to manual tasks.",
   },
   {
     eyebrow: "Build Loop",
@@ -28,9 +28,9 @@ export const featureCards = [
   },
   {
     eyebrow: "Review & Approve",
-    title: "Task-scoped diffs. Approve, reject, or let the agent retry.",
+    title: "Task-scoped diffs, human review gates, and an AI code reviewer after the build.",
     body:
-      "Every task pauses for review with a syntax-highlighted diff, acceptance criteria checklist, and full agent activity log. Reject with notes and the agent retries with your feedback in context.",
+      "Every task pauses with a syntax-highlighted diff and acceptance criteria checklist — approve, reject, or let the agent retry with your notes. When all tasks are done, run the Code Review Agent: it scans the full feature diff across 7 categories, flags Critical, Warning, and Info findings, and fixes the ones you select in a single commit.",
   },
 ];
 
@@ -60,9 +60,9 @@ export const workflowContent = {
     },
     {
       id: "04",
-      title: "Review & merge",
+      title: "Review, then code review & merge",
       text:
-        "Inspect task-level diffs, check acceptance criteria, and approve or reject with notes. Approved tasks are committed and pushed. The loop continues until the feature is complete.",
+        "Inspect task-level diffs, check acceptance criteria, and approve or reject with notes. When all tasks are complete, optionally run the Code Review Agent — it scans the full feature diff for security, performance, and convention issues, then fixes what you select before you open a PR.",
     },
   ],
 };
@@ -106,17 +106,28 @@ export const showcaseContent = {
       steps: ["Describe", "Review Specification", "Edit", "Tasks", "Confirm"],
     },
     {
-      type: "refine",
-      label: "Spec Refinement",
-      title: "Targeted questions that sharpen the spec before any code is written",
+      type: "brainstorm",
+      label: "Brainstorm",
+      title: "Explore approaches before committing to a design",
       body:
-        "Relay asks just enough to clarify layout, behavior, and implementation details — then generates the PRD with your answers baked in.",
-      question: "How should the hero section adapt across different screen sizes?",
-      options: [
-        "Maintain particles on all devices with reduced complexity on mobile",
-        "Remove particles on mobile, keep static design for performance",
-        "Different layouts: side-by-side on desktop, stacked on mobile",
-        "Single responsive layout that scales proportionally",
+        "A structured conversation that walks through your needs, presents approaches with trade-offs, and converges on a design document — before any code is written.",
+      phases: ["Understanding", "Approaches", "Designing", "Complete"],
+      activePhase: 1,
+      question: "How should we handle state management for the new dashboard?",
+      approaches: [
+        {
+          title: "Local component state",
+          description: "Each widget manages its own state with useState/useReducer.",
+          pro: "Simple, no extra dependencies",
+          con: "Hard to share state across widgets",
+        },
+        {
+          title: "Zustand store",
+          description: "Single shared store with selector-based subscriptions.",
+          pro: "Minimal boilerplate, great perf",
+          con: "Another dependency to maintain",
+          recommended: true,
+        },
       ],
     },
   ],

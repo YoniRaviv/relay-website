@@ -702,60 +702,36 @@
   text-align: center;
 }
 
-/* Refine panel */
-.showcase-refine-spec-card {
-  padding: 0.65rem;
-  border-radius: 10px;
-  background: var(--secondary);
-  margin-bottom: 0.6rem;
-}
-
-.showcase-refine-spec-card p {
-  margin: 0;
-  font-size: 0.7rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.showcase-refine-progress {
+/* Brainstorm panel */
+.showcase-brainstorm-phases {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-bottom: 0.7rem;
+  gap: 0.25rem;
+  margin-bottom: 0.8rem;
 }
 
-.showcase-refine-progress span {
-  display: inline-grid;
-  place-items: center;
-  width: 1.6rem;
-  height: 1.6rem;
+.showcase-brainstorm-phase {
+  padding: 0.3rem 0.6rem;
   border-radius: 999px;
-  background: var(--secondary);
   font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   color: var(--muted);
+  background: var(--secondary);
 }
 
-.showcase-refine-progress span.is-complete {
+.showcase-brainstorm-phase.is-complete {
   background: var(--primary);
   color: var(--primary-ink);
 }
 
-.showcase-refine-progress span.is-active {
+.showcase-brainstorm-phase.is-active {
   background: transparent;
-  box-shadow: inset 0 0 0 2px var(--primary);
+  box-shadow: inset 0 0 0 1.5px var(--primary);
   color: var(--primary);
 }
 
-.showcase-refine-progress-label {
-  background: transparent !important;
-  box-shadow: none !important;
-  width: auto !important;
-  font-size: 0.62rem !important;
-  color: var(--muted) !important;
-  margin-left: 0.3rem;
-}
-
-.showcase-refine-question {
+.showcase-brainstorm-question {
   margin-bottom: 0.7rem;
   font-size: 0.85rem;
   font-weight: 600;
@@ -763,60 +739,94 @@
   line-height: 1.4;
 }
 
-.showcase-refine-options {
+.showcase-brainstorm-approaches {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
-.showcase-refine-option {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.7rem;
+.showcase-brainstorm-approach {
+  position: relative;
+  padding: 0.75rem;
   border-radius: 10px;
   background: var(--secondary);
-  font-size: 0.72rem;
-  color: var(--muted);
-  line-height: 1.4;
 }
 
-.showcase-refine-option--active {
-  color: var(--text);
+.showcase-brainstorm-approach--recommended {
   background: rgba(46, 196, 166, 0.08);
   box-shadow: inset 0 0 0 1px rgba(46, 196, 166, 0.3);
 }
 
-.showcase-refine-radio {
+.showcase-brainstorm-badge {
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
+  margin-bottom: 0.4rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 999px;
-  border: 2px solid var(--muted);
-  flex-shrink: 0;
-  margin-top: 0.1rem;
+  background: rgba(46, 196, 166, 0.15);
+  color: var(--primary);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-.showcase-refine-radio--checked {
-  border-color: var(--primary);
-  background: radial-gradient(circle, var(--primary) 40%, transparent 41%);
+.showcase-brainstorm-approach-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
 }
 
-.showcase-refine-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.7rem;
-  font-size: 0.72rem;
+.showcase-brainstorm-approach-desc {
+  margin: 0 0 0.45rem;
+  font-size: 0.68rem;
   color: var(--muted);
+  line-height: 1.45;
 }
 
-.showcase-refine-next {
-  margin-left: auto;
+.showcase-brainstorm-tradeoffs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.showcase-brainstorm-pro,
+.showcase-brainstorm-con {
+  font-size: 0.62rem;
+  line-height: 1.4;
+}
+
+.showcase-brainstorm-pro::before {
+  content: "+  ";
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.showcase-brainstorm-pro {
+  color: rgba(46, 196, 166, 0.85);
+}
+
+.showcase-brainstorm-con::before {
+  content: "−  ";
+  font-weight: 700;
+  color: #e5534b;
+}
+
+.showcase-brainstorm-con {
+  color: rgba(229, 83, 75, 0.85);
+}
+
+.showcase-brainstorm-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.7rem;
+}
+
+.showcase-brainstorm-cta {
   padding: 0.45rem 0.8rem;
   border-radius: 8px;
   background: var(--primary);
   color: var(--primary-ink);
   font-weight: 700;
+  font-size: 0.72rem;
 }
 
 /* Mobile overrides — must come after all base rules */

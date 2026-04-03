@@ -22,7 +22,7 @@ export function ShowcaseSection({ content }) {
               <p className="text-muted leading-7 text-base">{panel.body}</p>
               {panel.type === "summary" && <SummaryPanel panel={panel} />}
               {panel.type === "spec" && <SpecPanel panel={panel} />}
-              {panel.type === "refine" && <RefinePanel panel={panel} />}
+              {panel.type === "brainstorm" && <BrainstormPanel panel={panel} />}
             </TiltCard>
           </RevealItem>
         ))}
@@ -111,38 +111,40 @@ function SpecPanel({ panel }) {
   );
 }
 
-function RefinePanel({ panel }) {
+function BrainstormPanel({ panel }) {
   return (
     <div className="showcase-ui">
-      <div className="showcase-refine-spec-card">
-        <p>Create a clean, modern hero section with a black background and subtle white particle animation...</p>
-      </div>
-      <div className="showcase-refine-progress">
-        {[1, 2, 3, 4, 5].map((step) => (
-          <span key={step} className={step < 4 ? "is-complete" : step === 4 ? "is-active" : ""}>
-            {step < 4 ? "✓" : step}
+      <div className="showcase-brainstorm-phases">
+        {panel.phases.map((phase, i) => (
+          <span
+            key={phase}
+            className={`showcase-brainstorm-phase${i < panel.activePhase ? " is-complete" : i === panel.activePhase ? " is-active" : ""}`}
+          >
+            {phase}
           </span>
         ))}
-        <span className="showcase-refine-progress-label">4 of 5</span>
       </div>
-      <div className="showcase-refine-question">
-        {panel.question}
-      </div>
-      <div className="showcase-refine-options">
-        {panel.options.map((option, index) => (
+      <div className="showcase-brainstorm-question">{panel.question}</div>
+      <div className="showcase-brainstorm-approaches">
+        {panel.approaches.map((approach) => (
           <div
-            key={option}
-            className={`showcase-refine-option${index === 1 ? " showcase-refine-option--active" : ""}`}
+            key={approach.title}
+            className={`showcase-brainstorm-approach${approach.recommended ? " showcase-brainstorm-approach--recommended" : ""}`}
           >
-            <span className={`showcase-refine-radio${index === 1 ? " showcase-refine-radio--checked" : ""}`} />
-            {option}
+            {approach.recommended && (
+              <span className="showcase-brainstorm-badge">Recommended</span>
+            )}
+            <div className="showcase-brainstorm-approach-title">{approach.title}</div>
+            <p className="showcase-brainstorm-approach-desc">{approach.description}</p>
+            <div className="showcase-brainstorm-tradeoffs">
+              <span className="showcase-brainstorm-pro">{approach.pro}</span>
+              <span className="showcase-brainstorm-con">{approach.con}</span>
+            </div>
           </div>
         ))}
       </div>
-      <div className="showcase-refine-footer">
-        <span>← Back</span>
-        <span>Skip</span>
-        <span className="showcase-refine-next">Next →</span>
+      <div className="showcase-brainstorm-footer">
+        <span className="showcase-brainstorm-cta">Choose this approach →</span>
       </div>
     </div>
   );

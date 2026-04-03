@@ -1,6 +1,6 @@
 export const docsPageContent = {
   sidebarEyebrow: "Documentation",
-  status: "v0.9.4-beta",
+  status: "v0.9.5-alpha",
   hero: {
     eyebrow: "How Relay Works",
     title: "Feature request to merged PR, in a single loop",
@@ -46,7 +46,24 @@ export const docsPageContent = {
       id: "prd-wizard",
       title: "Specification Wizard",
       body:
-        "The PRD wizard is a 5-step flow: Describe → Clarify → Preview → Tasks → Confirm. You type a feature request, optionally attach images and reference files with @filename. Relay reads your codebase, asks clarifying questions, and generates a structured specification with scope, dependencies, and build guidance. The spec is then decomposed into 3–10 tasks with explicit acceptance criteria. You can edit the PRD inline, reorder tasks, add or remove tasks manually, and set priorities before starting the build.",
+        "The wizard offers three paths into a feature. Specification mode is a 5-step flow — describe, clarify, preview, tasks, confirm — where Relay asks 3–5 clarifying questions and generates a structured PRD with scope, dependencies, and build guidance. Brainstorm mode is a structured multi-turn conversation: the AI explores your needs, presents 2–3 approaches with trade-offs, walks through each design section for approval, and converges on a full design document before generating tasks. Manual mode skips AI spec generation entirely — you go straight to a blank task board and add tasks yourself. All three paths converge at task decomposition, and you can edit tasks, reorder, add or remove before starting the build.",
+      cards: [
+        {
+          title: "Specification mode",
+          text:
+            "Describe your feature, attach images or reference files with @filename, and answer a few targeted questions. Relay generates a structured PRD and decomposes it into 3–10 tasks with explicit acceptance criteria. Best when you know what you want and want a fast path to the board.",
+        },
+        {
+          title: "Brainstorm mode",
+          text:
+            "A guided conversation that explores your needs, presents multiple implementation approaches with pros and cons, walks through each section of the design for approval or revision, and produces a complete design document. Best when the solution space is open and you want the AI to help you think through it before committing.",
+        },
+        {
+          title: "Manual mode",
+          text:
+            "Skip AI spec generation entirely. You land directly on a blank task board with three priority columns — High, Medium, Low — and create tasks yourself. A minimal PRD stub is saved to tie the tasks to the feature. Best for well-understood work where you already know the tasks.",
+        },
+      ],
     },
     {
       id: "kanban-board",
@@ -181,6 +198,29 @@ export const docsPageContent = {
           title: "Conflict detection",
           text:
             "Relay detects merge conflicts and shows failures as warnings. It never silently discards work or pushes over conflicts.",
+        },
+      ],
+    },
+    {
+      id: "code-review-agent",
+      title: "Code Review Agent",
+      body:
+        "A standalone post-build feature that scans your feature diff for issues before you open a PR. It runs in two phases: Phase 1 is read-only analysis — the agent reviews the full feature diff and produces a list of findings across 7 categories at 3 severity levels. Phase 2 is selective fixing — you check the findings you want addressed, and the agent applies all selected fixes in a single engine call and one commit. Each phase runs on a fresh context window, independent of the build loop. You choose which model to use before starting analysis, and it works with all three engines.",
+      cards: [
+        {
+          title: "7 review categories",
+          text:
+            "Security, Performance, Race Conditions, Error Handling, Best Practices, Conventions, and Accessibility. Findings are grouped by category with Critical, Warning, and Info severity levels. Per-finding checkboxes and bulk-select by severity let you decide exactly what gets fixed.",
+        },
+        {
+          title: "Stack & convention aware",
+          text:
+            "Auto-detects your tech stack (React, Express, Go, Python, Rust, and more) and applies stack-specific rules. Reads CLAUDE.md, .cursorrules, and other convention files in your project to enforce your actual coding standards, not generic ones.",
+        },
+        {
+          title: "Selective fixing",
+          text:
+            "Phase 2 only runs what you select. Choose individual findings or bulk-select by severity — the agent applies all fixes in one call and one clean commit. The review is advisory and non-blocking: you can proceed to PR creation at any point.",
         },
       ],
     },
